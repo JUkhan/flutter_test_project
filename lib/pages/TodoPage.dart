@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test_myself/components/LeftMenu.dart';
 import 'package:flutter_test_myself/store/TodoState.dart';
 import 'package:flutter_test_myself/utils/AsyncData.dart';
+import 'package:get_it/get_it.dart';
 
 class TodoPage extends StatelessWidget {
   const TodoPage({Key key}) : super(key: key);
@@ -17,7 +18,7 @@ class TodoPage extends StatelessWidget {
       body: Container(
         alignment: Alignment.center,
         child: StreamBuilder<TodoModel>(
-          stream: select('todo'),
+          stream: GetIt.I<Store>().select('todo'),
           initialData: TodoModel.init(),
           builder: (_, snapshot) {
             if (snapshot.data.todo.asyncStatus == AsyncStatus.Loading) {

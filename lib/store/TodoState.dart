@@ -32,7 +32,8 @@ class TodoState extends BaseState<TodoModel> {
   TodoState() : super(name: "todo", initialState: TodoModel.init());
   var api = GetIt.I<TodoApi>();
   @override
-  Stream<TodoModel> mapActionToState(TodoModel state, Action action) async* {
+  Stream<TodoModel> mapActionToState(
+      TodoModel state, Action action, Store store) async* {
     switch (action.type) {
       case ActionTypes.FetchTodo:
         yield state.copyWith(todo: AsyncData.loading());
@@ -44,7 +45,7 @@ class TodoState extends BaseState<TodoModel> {
         }
         break;
       default:
-        yield latestState(this);
+        yield getState(store);
     }
   }
 }

@@ -15,7 +15,6 @@ import 'package:flutter_test_myself/models/ThemeModel.dart';
 import 'package:flutter_test_myself/store/ThemeState.dart';
 
 import 'package:flutter_test_myself/utils/ActionTypes.dart';
-import 'package:flutter_test_myself/utils/AsyncData.dart';
 
 void main() {
   Store store;
@@ -39,7 +38,7 @@ void main() {
     build: () => store
         .select<ThemeModel>("theme")
         .map((event) => event.primarySwatch.value),
-    act: () => store.dispatch(getAction(ActionTypes.ChangeTheme, Colors.blue)),
+    act: () => store.dispatch(ActionTypes.ChangeTheme, Colors.blue),
     skip: 1,
     expect: [Colors.blue.value],
   );

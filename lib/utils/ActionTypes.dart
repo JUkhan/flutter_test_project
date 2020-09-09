@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class ActionTypes {
-  static const String ChangeTheme = "change_theme";
-  static const String FetchTodo = "FetchTodo";
-  static const String FetchTodos = "FetchTodos";
-  static const String SaveTodo = "SaveTodo";
-  static const String UpdateTodo = "UpdateTodo";
+abstract class ActionTypes {
+  static const ChangeTheme = "change_theme";
+  static const FetchTodo = "FetchTodo";
+  static const FetchTodos = "FetchTodos";
+  static const SaveTodo = "SaveTodo";
+  static const UpdateTodo = "UpdateTodo";
 }
 
 const List<Color> materialColors = const <Color>[

@@ -4,6 +4,7 @@ import 'package:flutter_test_myself/components/ColorThemeWidget.dart';
 import 'package:flutter_test_myself/components/LeftMenu.dart';
 import 'package:flutter_test_myself/models/ThemeModel.dart';
 import 'package:flutter_test_myself/utils/ActionTypes.dart';
+import 'package:get_it/get_it.dart';
 
 class SettingPage extends StatelessWidget {
   const SettingPage({Key key}) : super(key: key);
@@ -18,12 +19,12 @@ class SettingPage extends StatelessWidget {
       body: Container(
         alignment: Alignment.center,
         child: StreamBuilder<ThemeModel>(
-            stream: select('theme'),
+            stream: GetIt.I<Store>().select('theme'),
             initialData: ThemeModel.init(),
             builder: (context, snapshot) {
               return ColorThemeWidget(
                 onColorChange: (color) {
-                  dispatch(ActionTypes.ChangeTheme, color);
+                  GetIt.I<Store>().dispatch(ActionTypes.ChangeTheme, color);
                 },
                 selectedColor: snapshot.data.primarySwatch,
               );

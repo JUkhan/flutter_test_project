@@ -15,11 +15,12 @@ import 'models/ThemeModel.dart';
 
 void main() {
   GetIt.I.registerSingleton<TodoApi>(TodoApi());
-  createStore(states: [ThemeState(), TodoState()]);
-  exportState().listen((arr) {
+  var store = createStore(states: [ThemeState(), TodoState()]);
+  store.exportState().listen((arr) {
     print(arr[0].type);
     print(arr[1]);
   });
+  GetIt.I.registerSingleton<Store>(store);
   runApp(MyApp());
 }
 
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<ThemeModel>(
-        stream: select<ThemeModel>("theme"),
+        stream: GetIt.I<Store>().select<ThemeModel>("theme"),
         initialData: ThemeModel.init(),
         builder: (context, snapshot) {
           return MaterialApp(
