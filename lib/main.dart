@@ -15,7 +15,7 @@ import 'models/ThemeModel.dart';
 
 void main() {
   GetIt.I.registerSingleton<TodoApi>(TodoApi());
-  createStore(states: [ThemeState(), TodoState()], block: true);
+  createStore(states: [ThemeState(), TodoState()]);
   exportState().listen((arr) {
     print(arr[0].type);
     print(arr[1]);

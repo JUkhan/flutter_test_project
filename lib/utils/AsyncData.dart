@@ -4,19 +4,13 @@ Action getAction(String actionType, [dynamic payload]) {
   return Action(type: actionType, payload: payload);
 }
 
-enum AsyncStatus { Loading, Loaded, Initialize, Error }
+enum AsyncStatus { Loading, Loaded, Error }
 
 class AsyncData<T> {
   final T data;
   final AsyncStatus asyncStatus;
   final String error;
   AsyncData({this.data, this.asyncStatus, this.error});
-  AsyncData.init(T data)
-      : this(
-          data: data,
-          asyncStatus: AsyncStatus.Initialize,
-          error: null,
-        );
 
   AsyncData.loaded(T data)
       : this(

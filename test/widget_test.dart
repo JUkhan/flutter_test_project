@@ -20,7 +20,7 @@ import 'package:flutter_test_myself/utils/AsyncData.dart';
 void main() {
   Store store;
   setUpAll(() {
-    store = createStore(states: [ThemeState()], block: true);
+    store = createStore(states: [ThemeState()]);
   });
   tearDownAll(() {
     store.dispose();

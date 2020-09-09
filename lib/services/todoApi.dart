@@ -21,11 +21,8 @@ class TodoApi {
   Future<List<Todo>> fetchTodos2(String path) {
     return client
         .get(baseUrl + path)
-        .then((response) => json.decode(response.body))
-        .then((json) => (json as List)
-            .cast<Map<String, dynamic>>()
-            .map((e) => Todo.fromJson(e))
-            .toList());
+        .then((response) => json.decode(response.body) as List<dynamic>)
+        .then((data) => data.map((e) => Todo.fromJson(e)).toList());
   }
 
   Future<List<Todo>> fetchTodos(String path) async {
@@ -46,7 +43,7 @@ class TodoApi {
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
           },
-          body: jsonEncode(todo.toJson()),
+          body: todo.toJson(),
         )
         .then((response) => json.decode(response.body))
         .then((json) => Todo.fromJson(json));
@@ -59,7 +56,7 @@ class TodoApi {
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
           },
-          body: jsonEncode(todo.toJson()),
+          body: todo.toJson(),
         )
         .then((response) => json.decode(response.body))
         .then((json) => Todo.fromJson(json));
