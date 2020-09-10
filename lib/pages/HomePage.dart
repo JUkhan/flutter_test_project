@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_myself/components/CustomButtonWidget.dart';
-import 'package:flutter_test_myself/components/LeftMenu.dart';
+import 'package:flutter_test_myself/widgets/CustomButtonWidget.dart';
+import 'package:flutter_test_myself/widgets/LeftMenu.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);

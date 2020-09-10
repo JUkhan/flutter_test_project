@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:flutter_test_myself/models/ThemeModel.dart';
-import 'package:flutter_test_myself/store/ThemeState.dart';
+import 'package:flutter_test_myself/states/ThemeState.dart';
 
 import 'package:flutter_test_myself/utils/ActionTypes.dart';
 

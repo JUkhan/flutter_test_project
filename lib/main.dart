@@ -8,8 +8,8 @@ import 'package:flutter_test_myself/pages/SignupPage.dart';
 import 'package:flutter_test_myself/pages/TodoPage.dart';
 import 'package:flutter_test_myself/pages/WelcomePage.dart';
 import 'package:flutter_test_myself/services/todoApi.dart';
-import 'package:flutter_test_myself/store/ThemeState.dart';
-import 'package:flutter_test_myself/store/TodoState.dart';
+import 'package:flutter_test_myself/states/ThemeState.dart';
+import 'package:flutter_test_myself/states/TodoState.dart';
 import 'package:get_it/get_it.dart';
 import 'models/ThemeModel.dart';
 

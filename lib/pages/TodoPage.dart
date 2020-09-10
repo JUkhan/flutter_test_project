@@ -1,7 +1,7 @@
 import 'package:ajwah_bloc/ajwah_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_test_myself/components/LeftMenu.dart';
-import 'package:flutter_test_myself/store/TodoState.dart';
+import 'package:flutter_test_myself/widgets/LeftMenu.dart';
+import 'package:flutter_test_myself/states/TodoState.dart';
 import 'package:flutter_test_myself/utils/AsyncData.dart';
 import 'package:get_it/get_it.dart';
 

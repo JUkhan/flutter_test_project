@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:ajwah_bloc_test/ajwah_bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_test_myself/services/todoApi.dart';
-import 'package:flutter_test_myself/store/TodoState.dart';
+import 'package:flutter_test_myself/states/TodoState.dart';
 import 'package:flutter_test_myself/utils/ActionTypes.dart';
 import 'package:flutter_test_myself/utils/AsyncData.dart';
 import 'package:mockito/mockito.dart';
