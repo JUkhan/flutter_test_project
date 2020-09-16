@@ -38,7 +38,7 @@ void main() {
       log: (arr) {
         print(arr[1].todo.data.title);
       },
-      act: () => store.dispatch(ActionTypes.FetchTodo),
+      act: () => store.dispatcH(ActionTypes.FetchTodo),
       expect: [isA<TodoModel>(), isA<TodoModel>()],
       verify: (arr) {
         expect(arr[0].todo.asyncStatus, AsyncStatus.Loading);

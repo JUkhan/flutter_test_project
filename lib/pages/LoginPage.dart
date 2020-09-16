@@ -35,6 +35,8 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  TextEditingController textEditingController =
+      TextEditingController(text: "hello");
   Widget _entryField(String title, {bool isPassword = false}) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
@@ -49,10 +51,19 @@ class _LoginPageState extends State<LoginPage> {
             height: 10,
           ),
           TextField(
+              controller: textEditingController,
               obscureText: isPassword,
-              decoration: InputDecoration(
+              onChanged: (str) {
+                print(str);
+              },
+              onSubmitted: (str) {
+                print(str + "-->submitted");
+                textEditingController.clear();
+              },
+              cursorColor: Colors.red,
+              decoration: const InputDecoration(
                   border: InputBorder.none,
-                  fillColor: Color(0xfff3f3f4),
+                  fillColor: Color(0xffffcfd2), //Color(0xfff3f3f4),
                   filled: true))
         ],
       ),

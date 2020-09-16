@@ -24,7 +24,7 @@ class SettingPage extends StatelessWidget {
             builder: (context, snapshot) {
               return ColorThemeWidget(
                 onColorChange: (color) {
-                  GetIt.I<Store>().dispatch(ActionTypes.ChangeTheme, color);
+                  GetIt.I<Store>().dispatcH(ActionTypes.ChangeTheme, color);
                 },
                 selectedColor: snapshot.data.primarySwatch,
               );

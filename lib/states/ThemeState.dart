@@ -5,7 +5,7 @@ import 'package:flutter_test_myself/utils/ActionTypes.dart';
 
 import '../models/ThemeModel.dart';
 
-class ThemeState extends BaseState<ThemeModel> {
+class ThemeState extends StateBase<ThemeModel> {
   ThemeState() : super(name: "theme", initialState: ThemeModel.init());
 
   @override

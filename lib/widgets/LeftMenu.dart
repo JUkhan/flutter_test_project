@@ -50,7 +50,7 @@ class LeftMenu extends StatelessWidget {
         ListTile(
           title: Text("Todo Page"),
           onTap: () {
-            GetIt.I<Store>().dispatch(ActionTypes.FetchTodo);
+            GetIt.I<Store>().dispatcH(ActionTypes.FetchTodo);
             Navigator.pushNamed(context, "/todo");
           },
         )

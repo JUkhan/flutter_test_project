@@ -38,7 +38,7 @@ void main() {
     build: () => store
         .select<ThemeModel>("theme")
         .map((event) => event.primarySwatch.value),
-    act: () => store.dispatch(ActionTypes.ChangeTheme, Colors.blue),
+    act: () => store.dispatcH(ActionTypes.ChangeTheme, Colors.blue),
     skip: 1,
     expect: [Colors.blue.value],
   );

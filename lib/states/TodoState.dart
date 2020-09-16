@@ -28,7 +28,7 @@ class TodoModel {
       : this(todo: AsyncData.loading(), todos: AsyncData.loading());
 }
 
-class TodoState extends BaseState<TodoModel> {
+class TodoState extends StateBase<TodoModel> {
   TodoState() : super(name: "todo", initialState: TodoModel.init());
   var api = GetIt.I<TodoApi>();
   @override
