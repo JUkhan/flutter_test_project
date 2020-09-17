@@ -14,12 +14,14 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_test_myself/models/ThemeModel.dart';
 import 'package:flutter_test_myself/states/ThemeState.dart';
 
-import 'package:flutter_test_myself/utils/ActionTypes.dart';
+import 'shared_pref_mock.dart';
 
 void main() {
-  Store store;
+  AjwahStore store;
   setUpAll(() {
-    store = createStore(states: [ThemeState()]);
+    setSharedPrefMockData();
+    store = createStore();
+    registerThemeState(store);
   });
   tearDownAll(() {
     store.dispose();
@@ -29,8 +31,11 @@ void main() {
     build: () => store
         .select<ThemeModel>("theme")
         .map((event) => event.primarySwatch.value),
+    log: (models) {
+      print(models);
+    },
     //act: () => dispatch(ActionTypes.ChangeTheme, Colors.blue),
-    expect: [ThemeModel.init().primarySwatch.value],
+    expect: [ThemeModel(Colors.blue).primarySwatch.value],
   );
 
   ajwahTest(
@@ -38,7 +43,7 @@ void main() {
     build: () => store
         .select<ThemeModel>("theme")
         .map((event) => event.primarySwatch.value),
-    act: () => store.dispatcH(ActionTypes.ChangeTheme, Colors.blue),
+    act: () => store.dispatch(ChangeThemeAction(color: Colors.blue)),
     skip: 1,
     expect: [Colors.blue.value],
   );

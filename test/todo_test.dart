@@ -1,4 +1,5 @@
 import 'package:ajwah_bloc/ajwah_bloc.dart';
+import 'package:flutter_test_myself/states/registration.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:ajwah_bloc_test/ajwah_bloc_test.dart';
@@ -9,17 +10,20 @@ import 'package:flutter_test_myself/utils/ActionTypes.dart';
 import 'package:flutter_test_myself/utils/AsyncData.dart';
 import 'package:mockito/mockito.dart';
 
+import 'shared_pref_mock.dart';
+
 class MockClient extends Mock implements http.Client {}
 
 void main() {
-  Store store;
+  AjwahStore store;
   MockClient client;
   setUpAll(() {
+    setSharedPrefMockData();
     client = MockClient();
     GetIt.I.registerSingleton<TodoApi>(TodoApi.withMocks(client: client));
-    store = createStore(
-      states: [TodoState()],
-    );
+    store = createStore();
+    GetIt.I.registerSingleton<AjwahStore>(store);
+    registration();
   });
   tearDownAll(() {
     store.dispose();
@@ -38,7 +42,7 @@ void main() {
       log: (arr) {
         print(arr[1].todo.data.title);
       },
-      act: () => store.dispatcH(ActionTypes.FetchTodo),
+      act: () => store.dispatch(Action(type: ActionTypes.FetchTodo)),
       expect: [isA<TodoModel>(), isA<TodoModel>()],
       verify: (arr) {
         expect(arr[0].todo.asyncStatus, AsyncStatus.Loading);

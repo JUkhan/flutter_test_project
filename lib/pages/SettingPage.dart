@@ -1,9 +1,11 @@
 import 'package:ajwah_bloc/ajwah_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_test_myself/states/ThemeState.dart';
 import 'package:flutter_test_myself/widgets/ColorThemeWidget.dart';
 import 'package:flutter_test_myself/widgets/LeftMenu.dart';
 import 'package:flutter_test_myself/models/ThemeModel.dart';
 import 'package:flutter_test_myself/utils/ActionTypes.dart';
+import 'package:flutter_test_myself/widgets/StreamConsumer.dart';
 import 'package:get_it/get_it.dart';
 
 class SettingPage extends StatelessWidget {
@@ -18,15 +20,16 @@ class SettingPage extends StatelessWidget {
       drawer: LeftMenu(),
       body: Container(
         alignment: Alignment.center,
-        child: StreamBuilder<ThemeModel>(
-            stream: GetIt.I<Store>().select('theme'),
+        child: StreamConsumer<ThemeModel>(
+            stream: GetIt.I<AjwahStore>().select('theme'),
             initialData: ThemeModel.init(),
-            builder: (context, snapshot) {
+            builder: (context, state) {
               return ColorThemeWidget(
                 onColorChange: (color) {
-                  GetIt.I<Store>().dispatcH(ActionTypes.ChangeTheme, color);
+                  GetIt.I<AjwahStore>()
+                      .dispatch(ChangeThemeAction(color: color));
                 },
-                selectedColor: snapshot.data.primarySwatch,
+                selectedColor: state.primarySwatch,
               );
             }),
       ),

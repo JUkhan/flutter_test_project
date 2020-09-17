@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test_myself/widgets/LeftMenu.dart';
 import 'package:flutter_test_myself/states/TodoState.dart';
 import 'package:flutter_test_myself/utils/AsyncData.dart';
+import 'package:flutter_test_myself/widgets/StreamConsumer.dart';
 import 'package:get_it/get_it.dart';
 
 class TodoPage extends StatelessWidget {
@@ -17,22 +18,22 @@ class TodoPage extends StatelessWidget {
       drawer: LeftMenu(),
       body: Container(
         alignment: Alignment.center,
-        child: StreamBuilder<TodoModel>(
-          stream: GetIt.I<Store>().select('todo'),
+        child: StreamConsumer<TodoModel>(
+          stream: GetIt.I<AjwahStore>().select('todo'),
           initialData: TodoModel.init(),
-          builder: (_, snapshot) {
-            if (snapshot.data.todo.asyncStatus == AsyncStatus.Loading) {
+          builder: (_, state) {
+            if (state.todo.asyncStatus == AsyncStatus.Loading) {
               return CircularProgressIndicator();
-            } else if (snapshot.data.todo.asyncStatus == AsyncStatus.Error) {
+            } else if (state.todo.asyncStatus == AsyncStatus.Error) {
               return Text(
-                snapshot.data.todo.error,
+                state.todo.error,
                 style: new TextStyle(
                   color: Colors.red[300],
                 ),
               );
             }
             return Container(
-              child: Text(snapshot.data.todo.data.title),
+              child: Text(state.todo.data.title),
             );
           },
         ),

@@ -1,3 +1,4 @@
+import 'package:ajwah_bloc/ajwah_bloc.dart' as store;
 import 'package:ajwah_bloc/ajwah_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test_myself/utils/ActionTypes.dart';
@@ -50,7 +51,8 @@ class LeftMenu extends StatelessWidget {
         ListTile(
           title: Text("Todo Page"),
           onTap: () {
-            GetIt.I<Store>().dispatcH(ActionTypes.FetchTodo);
+            GetIt.I<AjwahStore>()
+                .dispatch(store.Action(type: ActionTypes.FetchTodo));
             Navigator.pushNamed(context, "/todo");
           },
         )
